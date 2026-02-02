@@ -1,0 +1,150 @@
+:root{
+    --bg:#0f1724;
+    --card:#0b1220;
+    --accent:#06a5fa;
+    --muted:#94a3b8;
+    --cell-bg:#fff;
+}
+*{
+    box-sizing: border-box;
+}
+html,body{
+    height: 100%;
+    margin: 0;
+    font-family: inter,ui-sans-serfi,system-ui,Roboto,"Helvetics Neue",Aril;
+}
+body{
+    background: linear-gradient(180deg,#071021 0%,#081127 100%);
+    color: #e6eef8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+
+.container{
+    width: 100%;
+    max-width: 750px; 
+    background: linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.03));
+    padding :20px;
+    border-radius: 12px;
+    box-shadow: 0 6px 30px rgba(2, 6, 23, 0.6);
+}
+h1{
+text-align: center;
+margin:0 0 18px 0;
+font-size: 28px;
+}
+.board-area{
+display:flex;
+justify-content: center;
+margin-bottom: 12px;
+}
+
+.sudoku-board{
+display: grid;
+grid-template-columns: repeat(9,44px);
+grid-template-rows: repeat(9,44px);
+gap: 2px;
+padding: 8px;
+border-radius: 8px;
+background: linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01)); 
+}
+
+.cell{
+padding:0;
+width:44px;
+height:44px;
+border-radius:6px;
+text-align: center;
+background:#fff;
+font-weight:600;
+color:#0b1220;
+font-size:18px;
+outline:none;
+border:1px solid rgba(2,6,23,0.06); 
+}
+
+.cell:focus{
+box-shadow: 0 0 0 3px rgba(96,165,250,0.18);
+}
+
+.cell.readonly{
+    background: #e6eef8a8;
+    color:#222e3a ;
+}
+
+.cell.error{
+    background: #f10808;
+}
+
+.cell.note{
+    background:#f6f8ff;
+}
+
+.Controls{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.buttons{
+    display:flex;
+    gap:8px;
+    margin-bottom:8px;
+    align-items: center;
+    justify-content: center;
+}
+
+button{
+    padding:8px 12px;
+    border-radius:8px;
+    border:none;
+    background:var(--accent);
+    color: #07203a;
+    font-weight:700;
+    cursor:pointer;
+}
+
+button:hover{
+    filter:brightness(1.05);
+}
+
+button.secondary{
+    background:transparent;
+    border:1px solid rgba(255,255,255,0.08);
+    color:var(--muted)
+}
+
+.notes{
+    font-size:13px;
+    text-align:center;
+}
+
+footer{
+    margin-top:12px;
+    text-align:center;
+    font-size:13px;
+}
+
+/*Thicker borders for 3x3 boxes*/
+.sudoku-board .cell{border-width:1px}
+.sudoku-board .cell:nth-child(3n){
+    border-right:2px solid rgba(2,6,23,0.12);
+}
+.sudoku-board .cell:nth-child(n+19):nth-child(-n+27),
+.sudoku-board .cell:nth-child(n+46):nth-child(-n+54){
+    border-right:2px solid rgba(2,6,23,0.12);
+}
+
+@media(max-width:520px){
+.sudoku-board{
+    grid-template-columns:repeat(9,36px);
+    grid-template-rows:repeat(9,36px)
+             }
+.cell{
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+     }
+}
